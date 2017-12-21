@@ -24,6 +24,11 @@
       <organizationUrl>http://github.com/sbtqa</organizationUrl>
     </developer>
   </developers>
+  <scm>
+    <connection>scm:git:git://github.com/sbtqa/chromedriver-bin</connection>
+    <developerConnection>scm:git:ssh://github.com:sbtqa/chromedriver-bin.git</developerConnection>
+    <url>https://github.com/sbtqa/chromedriver-bin/tree/master</url>
+  </scm>
   <build>
     <plugins>
       <plugin>
@@ -112,9 +117,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
-        <configuration>
-          <verbose>true</verbose>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.sonatype.plugins</groupId>

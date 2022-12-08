@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ru.sbtqa</groupId>
   <artifactId>chromedriver-bin</artifactId>
-  <version>107.0.5304.62</version>
+  <version>108.0.5359.71</version>
   <name>chromedriver-bin</name>
   <description>Package chromedriver as maven artifact</description>
   <url>http://github.com/sbtqa/chromedriver-bin</url>

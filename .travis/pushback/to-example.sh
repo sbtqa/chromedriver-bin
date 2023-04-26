@@ -1,6 +1,3 @@
-#!/bin/bash
-set -e
-
 git clone https://$GITHUB_TOKEN@github.com/sbtqa/page-factory-2-example.git
 cd page-factory-2-example
 git remote rm origin

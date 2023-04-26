@@ -7,5 +7,4 @@ sed -i "s/webdriver.version = [0-9.]*/webdriver.version = $CHROMEDRIVER_VERSION/
 git add -A
 git commit -m "bump chrome driver version by chromedriver-bin"
 git pull origin master
-echo "CHROMEDRIVER_VERSION = $CHROMEDRIVER_VERSION"
-#git push origin master
+git push origin master

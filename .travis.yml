@@ -27,4 +27,5 @@ deploy:
       tags: true
       jdk: oraclejdk8
 after_deploy:
-  - ./.travis/pushback.sh
+  - ./.travis/pushback/to-pf2.sh
+  - ./.travis/pushback/to-example.sh

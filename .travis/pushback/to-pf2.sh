@@ -1,3 +1,6 @@
+export CHROMEDRIVER_VERSION=$(grep -o '<version>[0-9.]*</version>' pom.xml | head -1 | sed 's_<version>__' | sed 's_</version>__')
+echo $CHROMEDRIVER_VERSION
+
 git clone https://$GITHUB_TOKEN@github.com/sbtqa/page-factory-2.git
 cd page-factory-2
 git remote rm origin

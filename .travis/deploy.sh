@@ -8,5 +8,5 @@ fi
 
 mvn clean deploy --settings .travis/settings.xml -DskipTests=true -Drelease=true -B -U
 
-export version=$(grep -o '<version>[0-9.]*</version>' pom.xml | head -1 | sed 's_<version>__' | sed 's_</version>__')
-echo $version
+export CHROMEDRIVER_VERSION=$(grep -o '<version>[0-9.]*</version>' pom.xml | head -1 | sed 's_<version>__' | sed 's_</version>__')
+echo $CHROMEDRIVER_VERSION

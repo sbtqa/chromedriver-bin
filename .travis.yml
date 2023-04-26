@@ -27,5 +27,6 @@ deploy:
       tags: true
       jdk: oraclejdk8
 after_deploy:
+  - export CHROMEDRIVER_VERSION=$(grep -o '<version>[0-9.]*</version>' pom.xml | head -1 | sed 's_<version>__' | sed 's_</version>__')
   - ./.travis/pushback/to-pf2.sh
-#  - ./.travis/pushback/to-example.sh
+  - ./.travis/pushback/to-example.sh

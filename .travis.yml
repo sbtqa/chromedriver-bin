@@ -28,4 +28,4 @@ deploy:
       jdk: oraclejdk8
 after_deploy:
   - ./.travis/pushback/to-pf2.sh
-  - ./.travis/pushback/to-example.sh
+#  - ./.travis/pushback/to-example.sh

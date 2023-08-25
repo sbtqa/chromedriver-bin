@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ru.sbtqa</groupId>
   <artifactId>chromedriver-bin</artifactId>
-  <version>114.0.5735.90</version>
+  <version>115.0.5790.170</version>
   <name>chromedriver-bin</name>
   <description>Package chromedriver as maven artifact</description>
   <url>http://github.com/sbtqa/chromedriver-bin</url>
@@ -39,6 +39,7 @@
     <maven.source.plugin.version>2.2.1</maven.source.plugin.version>
     <maven.javadoc.plugin.version>2.9.1</maven.javadoc.plugin.version>
     <maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
+    <chrome.baseurl>https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing</chrome.baseurl>
   </properties>
 
   <build>
@@ -56,10 +57,24 @@
             </goals>
             <configuration>
               <url>
-                https://chromedriver.storage.googleapis.com/${project.version}/chromedriver_win32.zip
+                ${chrome.baseurl}/${project.version}/win32/chromedriver-win32.zip
               </url>
               <unpack>true</unpack>
               <outputDirectory>${project.build.directory}/win32</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>download-win64</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>
+                ${chrome.baseurl}/${project.version}/win64/chromedriver-win64.zip
+              </url>
+              <unpack>true</unpack>
+              <outputDirectory>${project.build.directory}/win64</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -70,24 +85,38 @@
             </goals>
             <configuration>
               <url>
-                https://chromedriver.storage.googleapis.com/${project.version}/chromedriver_linux64.zip
+                ${chrome.baseurl}/${project.version}/linux64/chromedriver-linux64.zip
               </url>
               <unpack>true</unpack>
               <outputDirectory>${project.build.directory}/linux64</outputDirectory>
             </configuration>
           </execution>
           <execution>
-            <id>download-mac64</id>
+            <id>download-mac-x64</id>
             <phase>pre-integration-test</phase>
             <goals>
               <goal>wget</goal>
             </goals>
             <configuration>
               <url>
-                https://chromedriver.storage.googleapis.com/${project.version}/chromedriver_mac64.zip
+                ${chrome.baseurl}/${project.version}/mac-x64/chromedriver-mac-x64.zip
               </url>
               <unpack>true</unpack>
-              <outputDirectory>${project.build.directory}/mac64</outputDirectory>
+              <outputDirectory>${project.build.directory}/mac-x64</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>download-mac-arm64</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>
+                ${chrome.baseurl}/${project.version}/mac-arm64/chromedriver-mac-arm64.zip
+              </url>
+              <unpack>true</unpack>
+              <outputDirectory>${project.build.directory}/mac-arm64</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -106,19 +135,29 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>${project.build.directory}/win32/chromedriver.exe</file>
+                  <file>${project.build.directory}/win32/chromedriver-win32/chromedriver.exe</file>
                   <type>bin</type>
                   <classifier>win32</classifier>
                 </artifact>
                 <artifact>
-                  <file>${project.build.directory}/linux64/chromedriver</file>
+                  <file>${project.build.directory}/win64/chromedriver-win64/chromedriver.exe</file>
+                  <type>bin</type>
+                  <classifier>win64</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/linux64/chromedriver-linux64/chromedriver</file>
                   <type>bin</type>
                   <classifier>linux64</classifier>
                 </artifact>
                 <artifact>
-                  <file>${project.build.directory}/mac64/chromedriver</file>
+                  <file>${project.build.directory}/mac-x64/chromedriver-mac-x64/chromedriver</file>
                   <type>bin</type>
-                  <classifier>mac64</classifier>
+                  <classifier>mac-x64</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/mac-arm64/chromedriver-mac-arm64/chromedriver</file>
+                  <type>bin</type>
+                  <classifier>mac-arm64</classifier>
                 </artifact>
               </artifacts>
             </configuration>
@@ -199,5 +238,4 @@
       </build>
     </profile>
   </profiles>
-
 </project>
